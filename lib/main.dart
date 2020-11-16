@@ -1,4 +1,4 @@
-import 'package:cactus_jobs/pages/home_screen/home_screen.dart';
+import 'package:cactus_jobs/screens/home_screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
 

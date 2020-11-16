@@ -12,9 +12,38 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: kPrimaryColor,
+        backgroundColor: Colors.white,
+        currentIndex: _selectedIndex,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Главная',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.message),
+            label: 'Сообщения',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle),
+            label: 'Профиль',
+          ),
+        ],
+        onTap: _onItemTapped,
+      ),
       appBar: AppBar(
         actions: [
           IconButton(
@@ -46,18 +75,12 @@ class _HomePageState extends State<HomePage> {
               margin: EdgeInsets.zero,
               padding: EdgeInsets.zero,
               child: UserAccountsDrawerHeader(
-                decoration: BoxDecoration(
-                  color: kSecondaryColor,
-                ),
-                accountEmail: Text('employer@gmail.com'),
-                accountName: Text('Ваня Иванов'),
-                currentAccountPicture: Container(
                   decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: kPrimaryColor,
+                    color: kSecondaryColor,
                   ),
-                ),
-              ),
+                  accountEmail: Text('employer@gmail.com'),
+                  accountName: Text('Ваня Иванов'),
+                  currentAccountPicture: CircleAvatar()),
             ),
             ListTile(
               title: Text('Создать Вакансию'),
