@@ -3,6 +3,7 @@ import 'package:cactus_jobs/screens/messages_screen/messages_screen.dart';
 import 'package:cactus_jobs/screens/profile_screen/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'components/body.dart';
 
@@ -92,7 +93,9 @@ class _HomePageState extends State<HomePage> {
                   ),
                   accountName: Text('Ваня Иванов',
                       style: GoogleFonts.montserrat(color: Colors.white)),
-                  currentAccountPicture: CircleAvatar()),
+                  currentAccountPicture: CircleAvatar(
+                    child: SvgPicture.asset('assets/profile.svg'),
+                  )),
             ),
             ListTile(
               title: Text('Создать резюме'),
