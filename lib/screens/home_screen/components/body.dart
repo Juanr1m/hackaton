@@ -21,11 +21,108 @@ class _BodyState extends State<Body> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AppName(),
+            AppName(
+              firstTitle: 'Cactus',
+              secondTitle: 'Jobs',
+            ),
             SizedBox(height: 20),
             SearchField(),
             SizedBox(height: 30),
             Category(),
+            SizedBox(height: 30),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Вакансии Дня',
+                  style: GoogleFonts.montserrat(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                  ),
+                ),
+                SizedBox(height: 15),
+                Container(
+                  decoration: BoxDecoration(
+                      border: Border(
+                          left: BorderSide(width: 3, color: kSecondaryColor))),
+                  child: ListTile(
+                    title: Text('Frontend-разработчик'),
+                    subtitle: Text('от 4.000.000 сум'),
+                    trailing: Container(
+                      width: 25,
+                      height: 25,
+                      child:
+                          Image.asset('assets/1004px-Google__G__Logo.svg.png'),
+                    ),
+                    onTap: () {},
+                  ),
+                ),
+                Divider(
+                  color: Colors.transparent,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      border: Border(
+                          left: BorderSide(
+                    width: 3,
+                    color: kSecondaryColor,
+                  ))),
+                  child: ListTile(
+                    title: Text('UI-UX Дизайнер'),
+                    subtitle: Text('от 4.000.000 сум'),
+                    onTap: () {},
+                    trailing: Container(
+                      width: 35,
+                      height: 35,
+                      child: Image.asset('assets/123.png'),
+                    ),
+                  ),
+                ),
+                Divider(
+                  color: Colors.transparent,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      border: Border(
+                          left: BorderSide(
+                    width: 3,
+                    color: kSecondaryColor,
+                  ))),
+                  child: ListTile(
+                    title: Text('Видео-монтажер'),
+                    subtitle: Text('от 1.000.000 сум'),
+                    onTap: () {},
+                    trailing: Container(
+                      width: 35,
+                      height: 35,
+                      child: Image.asset(
+                          'assets/yandex+icon-1320194860721721271.png'),
+                    ),
+                  ),
+                ),
+                Divider(
+                  color: Colors.transparent,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      border: Border(
+                          left: BorderSide(
+                    width: 3,
+                    color: kSecondaryColor,
+                  ))),
+                  child: ListTile(
+                    title: Text('Курьер в Яндекс.еда'),
+                    subtitle: Text('от 4.000.000 сум'),
+                    onTap: () {},
+                    trailing: Container(
+                      width: 35,
+                      height: 35,
+                      child: Image.asset('assets/unnamed.png'),
+                    ),
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),
@@ -165,13 +262,16 @@ class SearchField extends StatelessWidget {
 class AppName extends StatelessWidget {
   const AppName({
     Key key,
+    this.firstTitle,
+    this.secondTitle,
   }) : super(key: key);
+  final String firstTitle, secondTitle;
 
   @override
   Widget build(BuildContext context) {
     return RichText(
       text: TextSpan(
-        text: 'Cactus',
+        text: firstTitle,
         style: GoogleFonts.montserrat(
           color: kPrimaryColor,
           fontWeight: FontWeight.bold,
@@ -179,7 +279,7 @@ class AppName extends StatelessWidget {
         ),
         children: [
           TextSpan(
-            text: 'Jobs',
+            text: secondTitle,
             style: GoogleFonts.montserrat(color: Colors.black),
           )
         ],

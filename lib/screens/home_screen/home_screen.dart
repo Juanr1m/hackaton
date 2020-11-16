@@ -1,4 +1,6 @@
 import 'package:cactus_jobs/constants.dart';
+import 'package:cactus_jobs/screens/messages_screen/messages_screen.dart';
+import 'package:cactus_jobs/screens/profile_screen/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -13,6 +15,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
+  final List<Widget> _children = <Widget>[
+    Body(),
+    MessagesScreen(),
+    ProfileScreen(),
+  ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -67,7 +74,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: Body(),
+      body: _children[_selectedIndex],
       drawer: Drawer(
         child: ListView(
           children: [
@@ -76,16 +83,33 @@ class _HomePageState extends State<HomePage> {
               padding: EdgeInsets.zero,
               child: UserAccountsDrawerHeader(
                   decoration: BoxDecoration(
-                    color: kSecondaryColor,
+                    color: kPrimaryColor,
                   ),
-                  accountEmail: Text('employer@gmail.com'),
-                  accountName: Text('Ваня Иванов'),
+                  accountEmail: Text(
+                    'employer@gmail.com',
+                    style: GoogleFonts.montserrat(color: Colors.white),
+                  ),
+                  accountName: Text('Ваня Иванов',
+                      style: GoogleFonts.montserrat(color: Colors.white)),
                   currentAccountPicture: CircleAvatar()),
             ),
             ListTile(
-              title: Text('Создать Вакансию'),
+              title: Text('Создать резюме'),
               onTap: () {},
-            )
+            ),
+            ListTile(
+              title: Text('Для компаний'),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text('О нас'),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text('Выйти из системы'),
+              onTap: () {},
+              trailing: Icon(Icons.exit_to_app),
+            ),
           ],
         ),
       ),
