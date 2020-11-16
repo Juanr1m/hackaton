@@ -35,6 +35,7 @@ class _HomePageState extends State<HomePage> {
         selectedItemColor: kPrimaryColor,
         backgroundColor: Colors.white,
         currentIndex: _selectedIndex,
+        elevation: 0,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
