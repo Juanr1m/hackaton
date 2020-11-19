@@ -1,3 +1,4 @@
+import 'package:cactus_jobs/constants.dart';
 import 'package:cactus_jobs/screens/home_screen/components/body.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -34,12 +35,30 @@ class _MessagesScreen extends State<MessagesScreen> {
                   size: 150,
                 ),
                 Text(
-                  'Нет Сообщений',
-                  style: GoogleFonts.montserrat(fontSize: 20),
+                  'Здесь будут ваши\nсообщения',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.grey,
+                  ),
+                  textAlign: TextAlign.center,
                 )
               ],
             ),
           ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height / 4.9,
+          ),
+          Container(
+            alignment: Alignment.bottomRight,
+            child: FloatingActionButton(
+              child: Icon(
+                Icons.add,
+                color: kSecondaryColor,
+              ),
+              backgroundColor: kPrimaryColor,
+              onPressed: () {},
+            ),
+          )
         ],
       ),
     );

@@ -28,11 +28,31 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  Icon _appBarIcon(int index) {
+    if (index == 0) {
+      return Icon(
+        Icons.add,
+        color: Colors.black,
+      );
+    } else if (index == 1) {
+      return Icon(
+        Icons.contacts_outlined,
+        color: Colors.black,
+      );
+    }
+    return Icon(
+      Icons.edit,
+      color: Colors.black,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       bottomNavigationBar: BottomNavigationBar(
+        selectedLabelStyle: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
+        iconSize: 28,
         selectedItemColor: kPrimaryColor,
         backgroundColor: Colors.white,
         currentIndex: _selectedIndex,
@@ -56,10 +76,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         actions: [
           IconButton(
-            icon: Icon(
-              Icons.add,
-              color: Colors.black,
-            ),
+            icon: _appBarIcon(_selectedIndex),
             onPressed: () {},
             iconSize: 30,
           ),
@@ -84,18 +101,26 @@ class _HomePageState extends State<HomePage> {
               margin: EdgeInsets.zero,
               padding: EdgeInsets.zero,
               child: UserAccountsDrawerHeader(
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: [kSecondaryColor, kPrimaryColor])),
+                accountEmail: Text(
+                  'employer@gmail.com',
+                  style: GoogleFonts.montserrat(color: Colors.white),
+                ),
+                accountName: Text('Ваня Иванов',
+                    style: GoogleFonts.montserrat(
+                        color: Colors.white, fontSize: 16)),
+                currentAccountPicture: Container(
                   decoration: BoxDecoration(
-                    color: kPrimaryColor,
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                      image: AssetImage('assets/rick.jpg'),
+                      fit: BoxFit.fitHeight,
+                    ),
                   ),
-                  accountEmail: Text(
-                    'employer@gmail.com',
-                    style: GoogleFonts.montserrat(color: Colors.white),
-                  ),
-                  accountName: Text('Ваня Иванов',
-                      style: GoogleFonts.montserrat(color: Colors.white)),
-                  currentAccountPicture: CircleAvatar(
-                    child: SvgPicture.asset('assets/profile.svg'),
-                  )),
+                ),
+              ),
             ),
             ListTile(
               title: Text('Создать резюме'),

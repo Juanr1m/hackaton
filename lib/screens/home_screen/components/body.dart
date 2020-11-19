@@ -1,3 +1,4 @@
+import 'package:cactus_jobs/screens/offer_details/offer_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -40,7 +41,7 @@ class _BodyState extends State<Body> {
                     fontSize: 25,
                   ),
                 ),
-                SizedBox(height: 15),
+                SizedBox(height: 20),
                 Container(
                   decoration: BoxDecoration(
                       border: Border(
@@ -54,7 +55,13 @@ class _BodyState extends State<Body> {
                       child:
                           Image.asset('assets/1004px-Google__G__Logo.svg.png'),
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  OfferDetailsScreen()));
+                    },
                   ),
                 ),
                 Divider(
@@ -70,7 +77,13 @@ class _BodyState extends State<Body> {
                   child: ListTile(
                     title: Text('UI-UX Дизайнер'),
                     subtitle: Text('от 4.000.000 сум'),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  OfferDetailsScreen()));
+                    },
                     trailing: Container(
                       width: 35,
                       height: 35,
@@ -91,7 +104,13 @@ class _BodyState extends State<Body> {
                   child: ListTile(
                     title: Text('Видео-монтажер'),
                     subtitle: Text('от 1.000.000 сум'),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  OfferDetailsScreen()));
+                    },
                     trailing: Container(
                       width: 35,
                       height: 35,
@@ -113,7 +132,13 @@ class _BodyState extends State<Body> {
                   child: ListTile(
                     title: Text('Курьер в Яндекс.еда'),
                     subtitle: Text('от 4.000.000 сум'),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  OfferDetailsScreen()));
+                    },
                     trailing: Container(
                       width: 35,
                       height: 35,
@@ -141,13 +166,13 @@ class Category extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Популярные Направления',
+          'Популярные Категории',
           style: GoogleFonts.montserrat(
             fontWeight: FontWeight.bold,
             fontSize: 25,
           ),
         ),
-        SizedBox(height: 15),
+        SizedBox(height: 20),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
@@ -165,6 +190,11 @@ class Category extends StatelessWidget {
               CategoryCard(
                 imgAsset: 'assets/Remote-Work-Dice.png',
                 title: 'Удаленная Работа',
+                press: () {},
+              ),
+              CategoryCard(
+                imgAsset: 'assets/images.jpg',
+                title: 'Неполный день',
                 press: () {},
               ),
             ],
@@ -196,14 +226,16 @@ class CategoryCard extends StatelessWidget {
           alignment: Alignment.center,
           children: [
             Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-              ),
+              decoration: BoxDecoration(),
               width: 250,
               height: 110,
-              child: Image.asset(
-                imgAsset,
-                fit: BoxFit.cover,
+              child: ColorFiltered(
+                colorFilter:
+                    ColorFilter.mode(Colors.black26, BlendMode.multiply),
+                child: Image.asset(
+                  imgAsset,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             Container(
@@ -245,8 +277,7 @@ class SearchField extends StatelessWidget {
         ),
         child: TextFormField(
           decoration: InputDecoration(
-              contentPadding:
-                  EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               hintText: 'Найти вакансию',
               hintStyle: GoogleFonts.montserrat(),
               suffixIcon: Icon(
