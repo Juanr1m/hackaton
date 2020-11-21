@@ -1,5 +1,6 @@
 import 'package:cactus_jobs/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'components/body.dart';
 
@@ -22,6 +23,20 @@ class _OfferDetailsScreenState extends State<OfferDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      persistentFooterButtons: [
+        Container(
+          width: 300,
+          decoration: BoxDecoration(
+              color: kPrimaryColor, borderRadius: BorderRadius.circular(30)),
+          child: TextButton(
+            onPressed: () {},
+            child: Text(
+              'Откликнуться',
+              style: GoogleFonts.montserrat(color: Colors.white, fontSize: 18),
+            ),
+          ),
+        )
+      ],
       appBar: AppBar(
         actions: [
           IconButton(

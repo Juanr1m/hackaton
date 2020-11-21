@@ -81,7 +81,7 @@ class _CategoryState extends State<Category> {
             Container(
               margin: EdgeInsets.symmetric(horizontal: 15),
               height: 3,
-              width: _width,
+              width: _width / 1.9,
               decoration: BoxDecoration(
                 color: kSecondaryColor,
                 borderRadius: BorderRadius.circular(30),
