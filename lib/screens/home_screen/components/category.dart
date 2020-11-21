@@ -1,4 +1,5 @@
 import 'package:cactus_jobs/constants.dart';
+import 'package:cactus_jobs/screens/offers_list/offers_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -47,22 +48,42 @@ class _CategoryState extends State<Category> {
               CategoryCard(
                 imgAsset: 'assets/634e9d7041b25ff95cde40841733255f.jpg',
                 title: 'Информационные \nТехнологии',
-                press: () {},
+                press: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => OffersListScreen()),
+                  );
+                },
               ),
               CategoryCard(
                 imgAsset: 'assets/1d659093f0161d95d51fef52af38e160.jpg',
                 title: 'Маркетинг',
-                press: () {},
+                press: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => OffersListScreen()),
+                  );
+                },
               ),
               CategoryCard(
                 imgAsset: 'assets/Remote-Work-Dice.png',
                 title: 'Удаленная Работа',
-                press: () {},
+                press: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => OffersListScreen()),
+                  );
+                },
               ),
               CategoryCard(
                 imgAsset: 'assets/images.jpg',
                 title: 'Неполный день',
-                press: () {},
+                press: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => OffersListScreen()),
+                  );
+                },
               ),
             ],
           ),
