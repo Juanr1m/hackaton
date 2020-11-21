@@ -95,7 +95,7 @@ class _CategoryState extends State<Category> {
               margin: EdgeInsets.symmetric(horizontal: 15),
               height: 3,
               decoration: BoxDecoration(
-                color: Colors.black26,
+                color: Colors.black12,
                 borderRadius: BorderRadius.circular(30),
               ),
             ),
