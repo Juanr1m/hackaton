@@ -15,12 +15,9 @@ class _CategoryState extends State<Category> {
   ScrollController _controller;
   double _width = 30;
   double _scrollListener() {
-    if (_controller.offset >= _controller.position.maxScrollExtent &&
-        !_controller.position.outOfRange) {
-      setState(() {
-        _width = 150;
-      });
-    }
+    setState(() {
+      _width = _controller.position.pixels;
+    });
   }
 
   @override
@@ -74,13 +71,21 @@ class _CategoryState extends State<Category> {
         Stack(
           children: [
             Container(
+              margin: EdgeInsets.symmetric(horizontal: 15),
               height: 3,
-              color: Colors.black26,
+              decoration: BoxDecoration(
+                color: Colors.black26,
+                borderRadius: BorderRadius.circular(30),
+              ),
             ),
             Container(
+              margin: EdgeInsets.symmetric(horizontal: 15),
               height: 3,
               width: _width,
-              color: kSecondaryColor,
+              decoration: BoxDecoration(
+                color: kSecondaryColor,
+                borderRadius: BorderRadius.circular(30),
+              ),
             )
           ],
         )
