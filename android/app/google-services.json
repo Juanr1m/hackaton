@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "906553552047",
+    "firebase_url": "https://cactus-jobs.firebaseio.com",
+    "project_id": "cactus-jobs",
+    "storage_bucket": "cactus-jobs.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:906553552047:android:9890b56d3fc3ac9197f85a",
+        "android_client_info": {
+          "package_name": "com.example.cactus_jobs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "906553552047-vp0kemrgka9vo96jbd6en7lfoon9dl5i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEzsS_3P5RqceIE_r3zZRaZpBeswMoSxc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "906553552047-vp0kemrgka9vo96jbd6en7lfoon9dl5i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

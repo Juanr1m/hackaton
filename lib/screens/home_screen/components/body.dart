@@ -6,14 +6,14 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../constants.dart';
 import 'category.dart';
 
-class Body extends StatefulWidget {
-  Body({Key key}) : super(key: key);
+class HomeBody extends StatefulWidget {
+  HomeBody({Key key}) : super(key: key);
 
   @override
-  _BodyState createState() => _BodyState();
+  _HomeBodyState createState() => _HomeBodyState();
 }
 
-class _BodyState extends State<Body> {
+class _HomeBodyState extends State<HomeBody> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(

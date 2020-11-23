@@ -2,7 +2,6 @@ import 'package:cactus_jobs/constants.dart';
 import 'package:cactus_jobs/net/flutter_fire.dart';
 import 'package:cactus_jobs/screens/home_screen/components/body.dart';
 import 'package:cactus_jobs/screens/home_screen/home_screen.dart';
-import 'package:cactus_jobs/screens/sign_up/sign_up.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {
@@ -61,41 +60,28 @@ class _SignInFormState extends State<SignInForm> {
             label: 'Password',
           ),
           SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              TextButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SignUpScreen(),
-                      ));
+          Center(
+            child: Container(
+              width: MediaQuery.of(context).size.width / 1.5,
+              child: RaisedButton(
+                color: kPrimaryColor,
+                onPressed: () async {
+                  bool shouldNavigate =
+                      await register(_emailField.text, _passwordField.text);
+                  if (shouldNavigate) {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomePage(),
+                        ));
+                  }
                 },
                 child: Text(
                   'Зарегистрироваться',
-                  style: TextStyle(color: Colors.black54),
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
-              Container(
-                width: MediaQuery.of(context).size.width / 2.5,
-                child: RaisedButton(
-                  color: kPrimaryColor,
-                  onPressed: () async {
-                    bool shouldNavigate =
-                        await signIn(_emailField.text, _passwordField.text);
-                    if (shouldNavigate) {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => HomePage()));
-                    }
-                  },
-                  child: Text(
-                    'Войти',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              )
-            ],
+            ),
           ),
         ],
       ),
