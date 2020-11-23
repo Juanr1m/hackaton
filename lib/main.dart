@@ -1,4 +1,5 @@
 import 'package:cactus_jobs/screens/home_screen/home_screen.dart';
+import 'package:cactus_jobs/screens/sign_in/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
 
@@ -26,9 +27,10 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
           appBarTheme: AppBarTheme(
-            color: kPrimaryColor,
+            color: Colors.transparent,
+            elevation: 0,
           )),
-      home: HomePage(),
+      home: SignInScreen(),
     );
   }
 }

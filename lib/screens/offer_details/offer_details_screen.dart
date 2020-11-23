@@ -23,20 +23,21 @@ class _OfferDetailsScreenState extends State<OfferDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      persistentFooterButtons: [
-        Container(
-          width: 300,
-          decoration: BoxDecoration(
-              color: kPrimaryColor, borderRadius: BorderRadius.circular(30)),
-          child: TextButton(
-            onPressed: () {},
-            child: Text(
-              'Откликнуться',
-              style: GoogleFonts.montserrat(color: Colors.white, fontSize: 18),
-            ),
+      bottomNavigationBar: Container(
+        height: MediaQuery.of(context).size.height / 13,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(50),
+        ),
+        padding: EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+        child: RaisedButton(
+          onPressed: () {},
+          color: kPrimaryColor,
+          child: Text(
+            'Откликнуться',
+            style: TextStyle(color: Colors.white, fontSize: 18),
           ),
-        )
-      ],
+        ),
+      ),
       appBar: AppBar(
         actions: [
           IconButton(
