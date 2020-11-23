@@ -22,7 +22,7 @@ class Body extends StatelessWidget {
           ),
           SizedBox(height: 10),
           Text(
-            'Начать карьеру специалиста? Легко))',
+            'Регистрация',
             style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
           ),
           SizedBox(height: MediaQuery.of(context).size.height / 10),
