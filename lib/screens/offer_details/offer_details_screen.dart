@@ -1,7 +1,6 @@
 import 'package:cactus_jobs/constants.dart';
 import 'package:cactus_jobs/models/offer.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'components/body.dart';
 
@@ -14,8 +13,6 @@ class OfferDetailsScreen extends StatefulWidget {
 }
 
 class _OfferDetailsScreenState extends State<OfferDetailsScreen> {
-  bool _isInBookmarks = false;
-
   @override
   Widget build(BuildContext context) {
     final OfferDetailsArgument arguments =

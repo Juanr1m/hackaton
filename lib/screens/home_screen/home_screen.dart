@@ -2,11 +2,10 @@ import 'package:cactus_jobs/constants.dart';
 import 'package:cactus_jobs/screens/messages_screen/messages_screen.dart';
 import 'package:cactus_jobs/screens/profile_screen/profile_screen.dart';
 import 'package:cactus_jobs/screens/sign_in/sign_in.dart';
-import 'package:cactus_jobs/screens/sign_up/components/body.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import 'components/body.dart';
 

@@ -1,7 +1,6 @@
 import 'package:cactus_jobs/constants.dart';
 import 'package:cactus_jobs/screens/home_screen/components/body.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class MessagesScreen extends StatefulWidget {
   static String routeName = '/messages';

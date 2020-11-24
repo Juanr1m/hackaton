@@ -1,5 +1,3 @@
-import 'package:cactus_jobs/screens/home_screen/components/popular_offers.dart';
-import 'package:cactus_jobs/screens/offer_details/offer_details_screen.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatefulWidget {

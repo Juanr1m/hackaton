@@ -32,6 +32,7 @@ class PopularOffers extends StatelessWidget {
                   arguments: OfferDetailsArgument(offer: demoOffers[index])),
             );
           }
+          return null;
         }),
       ],
     );
@@ -52,7 +53,10 @@ class OfferCard extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
-          border: Border(left: BorderSide(width: 3, color: kSecondaryColor))),
+          border: Border(
+              left: BorderSide(
+                  width: 3,
+                  color: offer.isBookmark ? kPrimaryColor : kSecondaryColor))),
       child: ListTile(
         title: Text(offer.title),
         subtitle: Text(offer.inCome.toString()),

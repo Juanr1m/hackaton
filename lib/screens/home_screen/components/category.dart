@@ -15,7 +15,7 @@ class Category extends StatefulWidget {
 class _CategoryState extends State<Category> {
   ScrollController _controller;
   double _width = 30;
-  double _scrollListener() {
+  void _scrollListener() {
     setState(() {
       _width = _controller.position.pixels;
     });
