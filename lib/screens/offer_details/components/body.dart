@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Body extends StatelessWidget {
-  final ScrollController _scrollController = ScrollController();
+  final Offer offer;
 
+  const Body({Key key, @required this.offer}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -24,7 +25,7 @@ class Body extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      demoOffers[0].title,
+                      offer.title,
                       style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.bold, fontSize: 25),
                     ),
@@ -37,7 +38,7 @@ class Body extends StatelessWidget {
                               fontSize: 16),
                           children: [
                             TextSpan(
-                                text: '4.000.000 сум.',
+                                text: '${offer.inCome} сум.',
                                 style:
                                     GoogleFonts.montserrat(color: Colors.black))
                           ]),
@@ -45,7 +46,7 @@ class Body extends StatelessWidget {
                   ],
                 ),
                 Container(
-                  child: Image.asset('assets/1004px-Google__G__Logo.svg.png'),
+                  child: Image.asset(offer.company),
                   width: 50,
                   height: 50,
                 )

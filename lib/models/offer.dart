@@ -5,12 +5,14 @@ class Offer {
   final String desc;
   final String company;
   final int inCome;
-  final bool isBookmark;
+  bool isBookmark;
+  final bool isPopular;
   Offer({
     @required this.company,
     @required this.title,
     @required this.desc,
     this.isBookmark = false,
+    this.isPopular = true,
     this.inCome,
   });
 }

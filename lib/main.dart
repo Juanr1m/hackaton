@@ -1,3 +1,4 @@
+import 'package:cactus_jobs/routes.dart';
 import 'package:cactus_jobs/screens/home_screen/home_screen.dart';
 import 'package:cactus_jobs/screens/sign_in/sign_in.dart';
 import 'package:cactus_jobs/validation/sign_up_validation.dart';
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
           elevation: 0,
         ),
       ),
-      home: SignInScreen(),
+      initialRoute: SignInScreen.routeName,
+      routes: routes,
     );
   }
 }

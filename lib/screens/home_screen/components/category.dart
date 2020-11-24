@@ -49,40 +49,28 @@ class _CategoryState extends State<Category> {
                 imgAsset: 'assets/634e9d7041b25ff95cde40841733255f.jpg',
                 title: 'Информационные \nТехнологии',
                 press: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => OffersListScreen()),
-                  );
+                  Navigator.pushNamed(context, OffersListScreen.routeName);
                 },
               ),
               CategoryCard(
                 imgAsset: 'assets/1d659093f0161d95d51fef52af38e160.jpg',
                 title: 'Маркетинг',
                 press: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => OffersListScreen()),
-                  );
+                  Navigator.pushNamed(context, OffersListScreen.routeName);
                 },
               ),
               CategoryCard(
                 imgAsset: 'assets/Remote-Work-Dice.png',
                 title: 'Удаленная Работа',
                 press: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => OffersListScreen()),
-                  );
+                  Navigator.pushNamed(context, OffersListScreen.routeName);
                 },
               ),
               CategoryCard(
                 imgAsset: 'assets/images.jpg',
                 title: 'Неполный день',
                 press: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => OffersListScreen()),
-                  );
+                  Navigator.pushNamed(context, OffersListScreen.routeName);
                 },
               ),
             ],

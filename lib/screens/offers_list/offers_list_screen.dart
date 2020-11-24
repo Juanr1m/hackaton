@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'components/body.dart';
 
 class OffersListScreen extends StatelessWidget {
+  static String routeName = '/offer_list';
   const OffersListScreen({Key key}) : super(key: key);
 
   @override

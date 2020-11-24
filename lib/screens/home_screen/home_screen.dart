@@ -11,6 +11,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'components/body.dart';
 
 class HomePage extends StatefulWidget {
+  static String routename = '/home';
   HomePage({Key key}) : super(key: key);
 
   @override
@@ -141,11 +142,7 @@ class _HomePageState extends State<HomePage> {
               title: Text('Выйти из системы'),
               onTap: () async {
                 await FirebaseAuth.instance.signOut();
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SignInScreen(),
-                    ));
+                Navigator.pushNamed(context, SignInScreen.routeName);
               },
               trailing: Icon(Icons.exit_to_app),
             ),

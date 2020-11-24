@@ -77,11 +77,7 @@ class _SignInFormState extends State<SignInForm> {
             children: [
               TextButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SignUpScreen(),
-                      ));
+                  Navigator.pushNamed(context, SignUpScreen.routeName);
                 },
                 child: Text(
                   'Зарегистрироваться',
@@ -96,8 +92,7 @@ class _SignInFormState extends State<SignInForm> {
                     bool shouldNavigate =
                         await signIn(_emailField.text, _passwordField.text);
                     if (shouldNavigate) {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => HomePage()));
+                      Navigator.pushNamed(context, HomePage.routename);
                     }
                   },
                   child: Text(

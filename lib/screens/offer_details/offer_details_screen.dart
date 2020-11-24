@@ -1,10 +1,12 @@
 import 'package:cactus_jobs/constants.dart';
+import 'package:cactus_jobs/models/offer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'components/body.dart';
 
 class OfferDetailsScreen extends StatefulWidget {
+  static String routeName = '/offer_details';
   OfferDetailsScreen({Key key}) : super(key: key);
 
   @override
@@ -14,14 +16,16 @@ class OfferDetailsScreen extends StatefulWidget {
 class _OfferDetailsScreenState extends State<OfferDetailsScreen> {
   bool _isInBookmarks = false;
 
-  void _handleBookmark() {
-    setState(() {
-      _isInBookmarks = !_isInBookmarks;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    final OfferDetailsArgument arguments =
+        ModalRoute.of(context).settings.arguments;
+    void _handleBookmark() {
+      setState(() {
+        arguments.offer.isBookmark = !arguments.offer.isBookmark;
+      });
+    }
+
     return Scaffold(
       bottomNavigationBar: Container(
         height: MediaQuery.of(context).size.height / 13,
@@ -42,8 +46,10 @@ class _OfferDetailsScreenState extends State<OfferDetailsScreen> {
         actions: [
           IconButton(
             icon: Icon(
-              _isInBookmarks ? Icons.bookmark : Icons.bookmark_border,
-              color: _isInBookmarks ? kPrimaryColor : Colors.black,
+              arguments.offer.isBookmark
+                  ? Icons.bookmark
+                  : Icons.bookmark_border,
+              color: arguments.offer.isBookmark ? kPrimaryColor : Colors.black,
             ),
             onPressed: _handleBookmark,
           )
@@ -60,7 +66,15 @@ class _OfferDetailsScreenState extends State<OfferDetailsScreen> {
           },
         ),
       ),
-      body: Body(),
+      body: Body(
+        offer: arguments.offer,
+      ),
     );
   }
+}
+
+class OfferDetailsArgument {
+  final Offer offer;
+
+  OfferDetailsArgument({@required this.offer});
 }

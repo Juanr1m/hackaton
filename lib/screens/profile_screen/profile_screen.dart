@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProfileScreen extends StatefulWidget {
+  static String routeName = '/profile';
   ProfileScreen({Key key}) : super(key: key);
 
   @override
