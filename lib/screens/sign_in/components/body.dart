@@ -11,6 +11,12 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/05.png'),
+          alignment: Alignment.bottomCenter,
+        ),
+      ),
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       padding: EdgeInsets.symmetric(horizontal: 15),

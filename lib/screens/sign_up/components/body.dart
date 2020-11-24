@@ -12,6 +12,12 @@ class Body extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/01.png'),
+          alignment: Alignment.bottomCenter,
+        ),
+      ),
       padding: EdgeInsets.symmetric(horizontal: 15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,11 +48,13 @@ class SignInForm extends StatefulWidget {
 
 class _SignInFormState extends State<SignInForm> {
   final _formkey = GlobalKey<FormState>();
+  final List<String> errors = [];
   TextEditingController _emailField = TextEditingController();
   TextEditingController _passwordField = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: _formkey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
