@@ -1,7 +1,9 @@
 import 'package:cactus_jobs/screens/home_screen/home_screen.dart';
 import 'package:cactus_jobs/screens/sign_in/sign_in.dart';
+import 'package:cactus_jobs/validation/sign_up_validation.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'constants.dart';
 
 void main() async {
@@ -18,8 +20,9 @@ class MyApp extends StatelessWidget {
       title: 'Cactus Jobs',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        accentIconTheme: IconThemeData(color: kPrimaryColor),
         scaffoldBackgroundColor: Colors.white,
-        primarySwatch: Colors.blue,
+        primaryColor: kPrimaryColor,
         appBarTheme: AppBarTheme(
           color: Colors.transparent,
           elevation: 0,

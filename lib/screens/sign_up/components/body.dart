@@ -111,8 +111,10 @@ class PasswordField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: (String value) {},
       controller: _passwordField,
       decoration: InputDecoration(
+        focusColor: kPrimaryColor,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(28),
           borderSide: BorderSide(color: Colors.black),

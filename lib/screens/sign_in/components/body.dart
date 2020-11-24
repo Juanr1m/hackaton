@@ -3,38 +3,43 @@ import 'package:cactus_jobs/net/flutter_fire.dart';
 import 'package:cactus_jobs/screens/home_screen/components/body.dart';
 import 'package:cactus_jobs/screens/home_screen/home_screen.dart';
 import 'package:cactus_jobs/screens/sign_up/sign_up.dart';
+import 'package:cactus_jobs/validation/sign_up_validation.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Body extends StatelessWidget {
   const Body({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('assets/05.png'),
-          alignment: Alignment.bottomCenter,
+    return ChangeNotifierProvider(
+      create: (context) => SignUpValidation(),
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/05.png'),
+            alignment: Alignment.bottomCenter,
+          ),
         ),
-      ),
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      padding: EdgeInsets.symmetric(horizontal: 15),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AppName(
-            firstTitle: 'Cactus',
-            secondTitle: 'Jobs',
-          ),
-          SizedBox(height: 10),
-          Text(
-            'Начать карьеру специалиста? Легко))',
-            style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: MediaQuery.of(context).size.height / 10),
-          SignInForm(),
-        ],
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        padding: EdgeInsets.symmetric(horizontal: 15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            AppName(
+              firstTitle: 'Cactus',
+              secondTitle: 'Jobs',
+            ),
+            SizedBox(height: 10),
+            Text(
+              'Начать карьеру специалиста? Легко))',
+              style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height / 10),
+            SignInForm(),
+          ],
+        ),
       ),
     );
   }
@@ -122,9 +127,12 @@ class PasswordField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final validationService = Provider.of<SignUpValidation>(context);
     return TextFormField(
       controller: _passwordField,
+      onChanged: (String value) {},
       decoration: InputDecoration(
+        errorText: validationService.passwordField.error,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(28),
           borderSide: BorderSide(color: Colors.black),
@@ -166,9 +174,12 @@ class EmailField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final validationService = Provider.of<SignUpValidation>(context);
     return TextFormField(
       controller: _emailField,
+      onChanged: (String value) {},
       decoration: InputDecoration(
+          errorText: validationService.emailField.error,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(28),
             borderSide: BorderSide(color: Colors.black),
