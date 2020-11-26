@@ -51,6 +51,7 @@ class _SignInFormState extends State<SignInForm> {
   final List<String> errors = [];
   TextEditingController _emailField = TextEditingController();
   TextEditingController _passwordField = TextEditingController();
+  TextEditingController _fullNameField = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -58,6 +59,11 @@ class _SignInFormState extends State<SignInForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          NameField(
+            fullNameField: _fullNameField,
+            label: 'Имя',
+          ),
+          SizedBox(height: MediaQuery.of(context).size.height / 15),
           EmailField(
             emailField: _emailField,
             label: 'Email',
@@ -74,8 +80,8 @@ class _SignInFormState extends State<SignInForm> {
               child: RaisedButton(
                 color: kPrimaryColor,
                 onPressed: () async {
-                  bool shouldNavigate =
-                      await register(_emailField.text, _passwordField.text);
+                  bool shouldNavigate = await register(_emailField.text,
+                      _passwordField.text, _fullNameField.text);
                   if (shouldNavigate) {
                     Navigator.push(
                         context,
@@ -93,6 +99,49 @@ class _SignInFormState extends State<SignInForm> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class NameField extends StatelessWidget {
+  const NameField({
+    Key key,
+    @required TextEditingController fullNameField,
+    this.label,
+  })  : _fullNameField = fullNameField,
+        super(key: key);
+
+  final TextEditingController _fullNameField;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      controller: _fullNameField,
+      decoration: InputDecoration(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(28),
+            borderSide: BorderSide(color: Colors.black),
+            gapPadding: 10,
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(28),
+            borderSide: BorderSide(color: kPrimaryColor),
+            gapPadding: 10,
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(28),
+            borderSide: BorderSide(color: Colors.grey),
+            gapPadding: 10,
+          ),
+          labelText: label,
+          labelStyle: TextStyle(
+            fontSize: 18,
+            color: Colors.black,
+          ),
+          hintText: 'Ваня Иванов',
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          suffixIcon: Icon(Icons.email_outlined)),
     );
   }
 }
@@ -127,7 +176,7 @@ class PasswordField extends StatelessWidget {
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(28),
-          borderSide: BorderSide(color: kPrimaryColor),
+          borderSide: BorderSide(color: Colors.grey),
           gapPadding: 10,
         ),
         labelText: label,
@@ -171,7 +220,7 @@ class EmailField extends StatelessWidget {
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(28),
-            borderSide: BorderSide(color: kPrimaryColor),
+            borderSide: BorderSide(color: Colors.grey),
             gapPadding: 10,
           ),
           labelText: label,

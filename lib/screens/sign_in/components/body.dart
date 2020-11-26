@@ -3,7 +3,7 @@ import 'package:cactus_jobs/net/flutter_fire.dart';
 import 'package:cactus_jobs/screens/home_screen/components/body.dart';
 import 'package:cactus_jobs/screens/home_screen/home_screen.dart';
 import 'package:cactus_jobs/screens/sign_up/sign_up.dart';
-import 'package:cactus_jobs/validation/sign_up_validation.dart';
+import 'package:cactus_jobs/state/sign_up_validation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

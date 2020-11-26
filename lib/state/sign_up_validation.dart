@@ -1,6 +1,6 @@
 import 'package:cactus_jobs/constants.dart';
 
-import 'package:cactus_jobs/validation/validation_item.dart';
+import 'package:cactus_jobs/state/validation_item.dart';
 import 'package:flutter/widgets.dart';
 
 class SignUpValidation with ChangeNotifier {
