@@ -2,6 +2,7 @@ import 'package:cactus_jobs/constants.dart';
 import 'package:cactus_jobs/screens/messages_screen/messages_screen.dart';
 import 'package:cactus_jobs/screens/profile_screen/profile_screen.dart';
 import 'package:cactus_jobs/screens/sign_in/sign_in.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  var currentUser = FirebaseAuth.instance.currentUser.uid;
   int _selectedIndex = 0;
   final List<Widget> _children = <Widget>[
     HomeBody(),
@@ -108,12 +110,10 @@ class _HomePageState extends State<HomePage> {
                     gradient: LinearGradient(
                         colors: [kSecondaryColor, kPrimaryColor])),
                 accountEmail: Text(
-                  'employer@gmail.com',
+                  FirebaseAuth.instance.currentUser.email,
                   style: GoogleFonts.montserrat(color: Colors.white),
                 ),
-                accountName: Text('Ваня Иванов',
-                    style: GoogleFonts.montserrat(
-                        color: Colors.white, fontSize: 16)),
+                accountName: GetUserName(FirebaseAuth.instance.currentUser.uid),
                 currentAccountPicture: Container(
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
@@ -148,6 +148,34 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class GetUserName extends StatelessWidget {
+  final String uid;
+
+  GetUserName(this.uid);
+
+  @override
+  Widget build(BuildContext context) {
+    CollectionReference users = FirebaseFirestore.instance.collection('users');
+
+    return FutureBuilder<DocumentSnapshot>(
+      future: users.doc(uid).get(),
+      builder:
+          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+        if (snapshot.hasError) {
+          return Text("Something went wrong");
+        }
+
+        if (snapshot.connectionState == ConnectionState.done) {
+          Map<String, dynamic> data = snapshot.data.data();
+          return Text(data['fullName']);
+        }
+
+        return Text("loading");
+      },
     );
   }
 }

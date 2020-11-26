@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
           elevation: 0,
         ),
       ),
-      initialRoute: HomePage.routename,
+      initialRoute: SignInScreen.routeName,
       routes: routes,
     );
   }

@@ -3,13 +3,17 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class UserModel {
   String uid;
   String email;
-  String fullName;
   Timestamp accountCreated;
+  String fullName;
+  String groupId;
+  String notifToken;
 
   UserModel({
     this.uid,
     this.email,
-    this.fullName,
     this.accountCreated,
+    this.fullName,
+    this.groupId,
+    this.notifToken,
   });
 }
