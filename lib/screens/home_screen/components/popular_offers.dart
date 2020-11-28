@@ -34,7 +34,7 @@ class PopularOffers extends StatelessWidget {
                   arguments: OfferDetailsArgument(offer: offers[index])),
             );
           }
-          return null;
+          return SizedBox(height: 1);
         }),
       ],
     );

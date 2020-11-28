@@ -1,5 +1,6 @@
 import 'package:cactus_jobs/constants.dart';
 import 'package:cactus_jobs/models/offer.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'components/body.dart';
@@ -17,7 +18,7 @@ class _OfferDetailsScreenState extends State<OfferDetailsScreen> {
   Widget build(BuildContext context) {
     final OfferDetailsArgument arguments =
         ModalRoute.of(context).settings.arguments;
-    void _handleBookmark() {
+    void _handleBookmark() async {
       setState(() {
         arguments.offer.isBookmark = !arguments.offer.isBookmark;
       });
