@@ -19,7 +19,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var currentUser = FirebaseAuth.instance.currentUser.uid;
   int _selectedIndex = 0;
   final List<Widget> _children = <Widget>[
     HomeBody(),
@@ -110,10 +109,9 @@ class _HomePageState extends State<HomePage> {
                     gradient: LinearGradient(
                         colors: [kSecondaryColor, kPrimaryColor])),
                 accountEmail: Text(
-                  FirebaseAuth.instance.currentUser.email,
-                  style: GoogleFonts.montserrat(color: Colors.white),
+                  'test@gmail.com',
                 ),
-                accountName: GetUserName(FirebaseAuth.instance.currentUser.uid),
+                accountName: Text('Ваня Иванов'),
                 currentAccountPicture: Container(
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
@@ -148,34 +146,6 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class GetUserName extends StatelessWidget {
-  final String uid;
-
-  GetUserName(this.uid);
-
-  @override
-  Widget build(BuildContext context) {
-    CollectionReference users = FirebaseFirestore.instance.collection('users');
-
-    return FutureBuilder<DocumentSnapshot>(
-      future: users.doc(uid).get(),
-      builder:
-          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-        if (snapshot.hasError) {
-          return Text("Something went wrong");
-        }
-
-        if (snapshot.connectionState == ConnectionState.done) {
-          Map<String, dynamic> data = snapshot.data.data();
-          return Text(data['fullName']);
-        }
-
-        return Text("loading");
-      },
     );
   }
 }

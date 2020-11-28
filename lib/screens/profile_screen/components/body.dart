@@ -18,7 +18,6 @@ class _BodyState extends State<Body> {
   @override
   void initState() {
     super.initState();
-    _bookmarkOffers = demoOffers.where((f) => f.isBookmark).toList();
   }
 
   Widget build(BuildContext context) {
@@ -90,7 +89,7 @@ class _BodyState extends State<Body> {
                   press: () => Navigator.pushNamed(
                     context,
                     OfferDetailsScreen.routeName,
-                    arguments: OfferDetailsArgument(offer: demoOffers[index]),
+                    // arguments: OfferDetailsArgument(offer: demoOffers[index]),
                   ),
                 ),
               )

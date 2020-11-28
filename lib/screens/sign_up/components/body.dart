@@ -31,7 +31,7 @@ class Body extends StatelessWidget {
             'Регистрация',
             style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: MediaQuery.of(context).size.height / 10),
+          SizedBox(height: 30),
           SignInForm(),
         ],
       ),
@@ -63,12 +63,12 @@ class _SignInFormState extends State<SignInForm> {
             fullNameField: _fullNameField,
             label: 'Имя',
           ),
-          SizedBox(height: MediaQuery.of(context).size.height / 15),
+          SizedBox(height: MediaQuery.of(context).size.height / 20),
           EmailField(
             emailField: _emailField,
             label: 'Email',
           ),
-          SizedBox(height: MediaQuery.of(context).size.height / 15),
+          SizedBox(height: MediaQuery.of(context).size.height / 20),
           PasswordField(
             passwordField: _passwordField,
             label: 'Password',

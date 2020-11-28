@@ -2,6 +2,7 @@ import 'package:cactus_jobs/models/offer.dart';
 import 'package:cactus_jobs/screens/offer_details/offer_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 import '../../../constants.dart';
 
@@ -12,6 +13,7 @@ class PopularOffers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final offers = Provider.of<List<Offer>>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -23,13 +25,13 @@ class PopularOffers extends StatelessWidget {
           ),
         ),
         SizedBox(height: 20),
-        ...List.generate(demoOffers.length, (index) {
-          if (demoOffers[index].isPopular) {
+        ...List.generate(offers.length, (index) {
+          if (offers[index].isPopular) {
             return OfferCard(
-              offer: demoOffers[index],
+              offer: offers[index],
               press: () => Navigator.pushNamed(
                   context, OfferDetailsScreen.routeName,
-                  arguments: OfferDetailsArgument(offer: demoOffers[index])),
+                  arguments: OfferDetailsArgument(offer: offers[index])),
             );
           }
           return null;
