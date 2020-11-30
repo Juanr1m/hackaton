@@ -36,7 +36,7 @@ class Body extends StatelessWidget {
               'Начать карьеру специалиста? Легко))',
               style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: MediaQuery.of(context).size.height / 15),
+            SizedBox(height: MediaQuery.of(context).size.height / 20),
             SignInForm(),
           ],
         ),
@@ -67,10 +67,10 @@ class _SignInFormState extends State<SignInForm> {
             emailField: _emailField,
             label: 'Email',
           ),
-          SizedBox(height: MediaQuery.of(context).size.height / 15),
+          SizedBox(height: MediaQuery.of(context).size.height / 20),
           PasswordField(
             passwordField: _passwordField,
-            label: 'Password',
+            label: 'Пароль',
           ),
           SizedBox(height: 10),
           Row(
@@ -88,6 +88,8 @@ class _SignInFormState extends State<SignInForm> {
               Container(
                 width: MediaQuery.of(context).size.width / 2.5,
                 child: RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(40)),
                   color: kPrimaryColor,
                   onPressed: () async {
                     bool shouldNavigate =
@@ -98,12 +100,51 @@ class _SignInFormState extends State<SignInForm> {
                   },
                   child: Text(
                     'Войти',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
                 ),
               )
             ],
           ),
+          SizedBox(height: 5),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 20),
+            child: OutlineButton(
+              splashColor: Colors.grey,
+              onPressed: () async {
+                bool shouldNavigate = await signInWithGoogle();
+                if (shouldNavigate) {
+                  Navigator.pushNamed(context, HomePage.routename);
+                }
+              },
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(40)),
+              highlightElevation: 0,
+              borderSide: BorderSide(color: Colors.grey),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Image(
+                        image: AssetImage("assets/google_logo.png"),
+                        height: 25.0),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 15),
+                      child: Text(
+                        'Sign in with Google',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );

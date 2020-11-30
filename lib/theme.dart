@@ -9,6 +9,7 @@ ThemeData theme() {
       visualDensity: VisualDensity.adaptivePlatformDensity,
       floatingActionButtonTheme: FloatingActionButtonThemeData(
         backgroundColor: kPrimaryColor,
+        foregroundColor: kSecondaryColor,
       ),
       appBarTheme: AppBarTheme(
         color: Colors.transparent,

@@ -71,7 +71,7 @@ class _SignInFormState extends State<SignInForm> {
           SizedBox(height: MediaQuery.of(context).size.height / 20),
           PasswordField(
             passwordField: _passwordField,
-            label: 'Password',
+            label: 'Пароль',
           ),
           SizedBox(height: 10),
           Center(
