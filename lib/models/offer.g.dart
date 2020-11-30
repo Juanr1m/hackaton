@@ -15,6 +15,7 @@ Offer _$OfferFromJson(Map<String, dynamic> json) {
     json['isBookmark'] as bool,
     json['isPopular'] as bool,
     json['inCome'] as int,
+    (json['categories'] as List)?.map((e) => e as String)?.toList(),
   );
 }
 
@@ -26,4 +27,5 @@ Map<String, dynamic> _$OfferToJson(Offer instance) => <String, dynamic>{
       'inCome': instance.inCome,
       'isBookmark': instance.isBookmark,
       'isPopular': instance.isPopular,
+      'categories': instance.categories,
     };

@@ -13,6 +13,7 @@ class Offer {
   int inCome;
   bool isBookmark;
   bool isPopular;
+  List<String> categories;
   Offer(
     this.id,
     this.company,
@@ -21,6 +22,7 @@ class Offer {
     this.isBookmark,
     this.isPopular,
     this.inCome,
+    this.categories,
   );
 
   factory Offer.fromJson(Map<String, dynamic> json) => _$OfferFromJson(json);
