@@ -36,7 +36,7 @@ class Body extends StatelessWidget {
               'Начать карьеру специалиста? Легко))',
               style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: MediaQuery.of(context).size.height / 10),
+            SizedBox(height: MediaQuery.of(context).size.height / 15),
             SignInForm(),
           ],
         ),

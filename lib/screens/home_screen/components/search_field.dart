@@ -23,7 +23,9 @@ class SearchField extends StatelessWidget {
         ),
         child: TextFormField(
           decoration: InputDecoration(
-              contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+              contentPadding: EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: MediaQuery.of(context).size.width / 38),
               hintText: 'Найти вакансию',
               hintStyle: GoogleFonts.montserrat(),
               suffixIcon: Icon(

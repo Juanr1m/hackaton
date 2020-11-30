@@ -16,11 +16,11 @@ class HomeBody extends StatefulWidget {
 class _HomeBodyState extends State<HomeBody> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        padding: EdgeInsets.symmetric(horizontal: 15),
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      padding: EdgeInsets.symmetric(horizontal: 15),
+      child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -28,11 +28,11 @@ class _HomeBodyState extends State<HomeBody> {
               firstTitle: 'Cactus',
               secondTitle: 'Jobs',
             ),
-            SizedBox(height: 20),
+            SizedBox(height: MediaQuery.of(context).size.height / 40),
             SearchField(),
-            SizedBox(height: 30),
+            SizedBox(height: MediaQuery.of(context).size.height / 40),
             Category(),
-            SizedBox(height: 20),
+            SizedBox(height: MediaQuery.of(context).size.height / 40),
             PopularOffers()
           ],
         ),

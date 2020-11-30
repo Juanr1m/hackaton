@@ -18,83 +18,85 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     final offers = Provider.of<List<Offer>>(context);
 
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      padding: EdgeInsets.symmetric(horizontal: 15),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AppName(
-            firstTitle: 'Мой ',
-            secondTitle: 'Профиль',
-          ),
-          SizedBox(height: 20),
-          Row(
-            children: [
-              Container(
-                width: 150,
-                height: 150,
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                        image: AssetImage('assets/rick.jpg'),
-                        fit: BoxFit.fitHeight)),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width / 15,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ProfileField(
-                    title: 'Имя',
-                    item: 'Ваня Иванов',
-                  ),
-                  ProfileField(
-                    title: 'Email',
-                    item: 'employer@gmail.com',
-                  ),
-                  ProfileField(
-                    title: 'Профессия',
-                    item: 'Go Developer',
-                  ),
-                  ProfileField(
-                    title: 'Город',
-                    item: 'Фергана',
-                  ),
-                ],
-              ),
-            ],
-          ),
-          SizedBox(height: 30),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Избранное:',
-                style: GoogleFonts.montserrat(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25,
+    return SingleChildScrollView(
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        padding: EdgeInsets.symmetric(horizontal: 15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            AppName(
+              firstTitle: 'Мой ',
+              secondTitle: 'Профиль',
+            ),
+            SizedBox(height: 20),
+            Row(
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width / 3,
+                  height: MediaQuery.of(context).size.width / 3,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                          image: AssetImage('assets/rick.jpg'),
+                          fit: BoxFit.fitHeight)),
                 ),
-              ),
-              SizedBox(height: 20),
-              ...List.generate(offers.length, (index) {
-                if (offers[index].isBookmark) {
-                  return OfferCard(
-                    offer: offers[index],
-                    press: () => Navigator.pushNamed(
-                      context,
-                      OfferDetailsScreen.routeName,
-                      arguments: OfferDetailsArgument(offer: offers[index]),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 15,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ProfileField(
+                      title: 'Имя',
+                      item: 'Ваня Иванов',
                     ),
-                  );
-                }
-                return SizedBox(height: 1);
-              }),
-            ],
-          ),
-        ],
+                    ProfileField(
+                      title: 'Email',
+                      item: 'employer@gmail.com',
+                    ),
+                    ProfileField(
+                      title: 'Профессия',
+                      item: 'Go Developer',
+                    ),
+                    ProfileField(
+                      title: 'Город',
+                      item: 'Фергана',
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            SizedBox(height: 30),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Избранное:',
+                  style: GoogleFonts.montserrat(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                  ),
+                ),
+                SizedBox(height: 20),
+                ...List.generate(offers.length, (index) {
+                  if (offers[index].isBookmark) {
+                    return OfferCard(
+                      offer: offers[index],
+                      press: () => Navigator.pushNamed(
+                        context,
+                        OfferDetailsScreen.routeName,
+                        arguments: OfferDetailsArgument(offer: offers[index]),
+                      ),
+                    );
+                  }
+                  return SizedBox(height: 1);
+                }),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

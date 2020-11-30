@@ -24,7 +24,7 @@ class _MessagesScreen extends State<MessagesScreen> {
             firstTitle: 'Сообщения',
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height / 5,
+            height: MediaQuery.of(context).size.height / 6,
           ),
           Center(
             child: Column(
@@ -53,9 +53,7 @@ class _MessagesScreen extends State<MessagesScreen> {
             child: FloatingActionButton(
               child: Icon(
                 Icons.add,
-                color: kSecondaryColor,
               ),
-              backgroundColor: kPrimaryColor,
               onPressed: () {},
             ),
           )

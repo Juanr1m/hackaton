@@ -24,7 +24,7 @@ class PopularOffers extends StatelessWidget {
             fontSize: 25,
           ),
         ),
-        SizedBox(height: 20),
+        SizedBox(height: MediaQuery.of(context).size.height / 40),
         ...List.generate(offers.length, (index) {
           if (offers[index].isPopular) {
             return OfferCard(

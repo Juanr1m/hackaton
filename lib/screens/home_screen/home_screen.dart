@@ -78,6 +78,7 @@ class _HomePageState extends State<HomePage> {
         onTap: _onItemTapped,
       ),
       appBar: AppBar(
+        toolbarHeight: MediaQuery.of(context).size.height / 15,
         actions: [
           IconButton(
             icon: _appBarIcon(_selectedIndex),
