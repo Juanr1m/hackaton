@@ -22,6 +22,17 @@ class _OfferDetailsScreenState extends State<OfferDetailsScreen> {
       setState(() {
         arguments.offer.isBookmark = !arguments.offer.isBookmark;
       });
+      if (arguments.offer.isBookmark) {
+        await FirebaseFirestore.instance
+            .collection('offers')
+            .doc(arguments.offer.id)
+            .update({'isBookmark': true});
+      } else {
+        await FirebaseFirestore.instance
+            .collection('offers')
+            .doc(arguments.offer.id)
+            .update({'isBookmark': false});
+      }
     }
 
     return Scaffold(
