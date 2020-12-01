@@ -24,10 +24,13 @@ class Body extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      offer.title,
-                      style: GoogleFonts.montserrat(
-                          fontWeight: FontWeight.bold, fontSize: 25),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      child: Text(
+                        offer.title,
+                        style: GoogleFonts.montserrat(
+                            fontWeight: FontWeight.bold, fontSize: 25),
+                      ),
                     ),
                     RichText(
                       text: TextSpan(
