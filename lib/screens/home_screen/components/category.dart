@@ -3,6 +3,33 @@ import 'package:cactus_jobs/screens/offers_list/offers_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+final List<Map<String, String>> _categories = [
+  {
+    'id': 'it',
+    'title': 'Информационные Технологии',
+    'imgAsset': 'assets/634e9d7041b25ff95cde40841733255f.jpg',
+    'bg': 'assets/Cool Kids - Brainstorming.png'
+  },
+  {
+    'id': 'marketing',
+    'title': 'Маркетинг',
+    'imgAsset': 'assets/1d659093f0161d95d51fef52af38e160.jpg',
+    'bg': 'assets/Cool Kids - Staying Home.png'
+  },
+  {
+    'id': 'remote',
+    'title': 'Удаленная Работа',
+    'imgAsset': 'assets/Remote-Work-Dice.png',
+    'bg': 'assets/Cool Kids - Staying Home.png'
+  },
+  {
+    'id': 'part',
+    'title': 'Неполный день',
+    'imgAsset': 'assets/images.jpg',
+    'bg': 'assets/Cool Kids - High Tech.png'
+  }
+];
+
 class Category extends StatefulWidget {
   const Category({
     Key key,
@@ -45,33 +72,22 @@ class _CategoryState extends State<Category> {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              CategoryCard(
-                imgAsset: 'assets/634e9d7041b25ff95cde40841733255f.jpg',
-                title: 'Информационные \nТехнологии',
-                press: () {
-                  Navigator.pushNamed(context, OffersListScreen.routeName);
-                },
-              ),
-              CategoryCard(
-                imgAsset: 'assets/1d659093f0161d95d51fef52af38e160.jpg',
-                title: 'Маркетинг',
-                press: () {
-                  Navigator.pushNamed(context, OffersListScreen.routeName);
-                },
-              ),
-              CategoryCard(
-                imgAsset: 'assets/Remote-Work-Dice.png',
-                title: 'Удаленная Работа',
-                press: () {
-                  Navigator.pushNamed(context, OffersListScreen.routeName);
-                },
-              ),
-              CategoryCard(
-                imgAsset: 'assets/images.jpg',
-                title: 'Неполный день',
-                press: () {
-                  Navigator.pushNamed(context, OffersListScreen.routeName);
-                },
+              ...List.generate(
+                _categories.length,
+                (index) => CategoryCard(
+                  imgAsset: _categories[index]['imgAsset'],
+                  title: _categories[index]['title'],
+                  press: () {
+                    Navigator.pushNamed(
+                      context,
+                      OffersListScreen.routeName,
+                      arguments: OfferListArguments(
+                          _categories[index]['id'],
+                          _categories[index]['title'],
+                          _categories[index]['bg']),
+                    );
+                  },
+                ),
               ),
             ],
           ),
@@ -137,6 +153,7 @@ class CategoryCard extends StatelessWidget {
               ),
             ),
             Container(
+              width: MediaQuery.of(context).size.width * 0.5,
               alignment: Alignment.center,
               child: Text(
                 title,

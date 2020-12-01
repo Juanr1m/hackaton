@@ -61,7 +61,7 @@ class OfferCard extends StatelessWidget {
                   color: offer.isBookmark ? kPrimaryColor : kSecondaryColor))),
       child: ListTile(
         title: Text(offer.title),
-        subtitle: Text(offer.inCome.toString()),
+        subtitle: Text('от ${offer.inCome} сум'),
         trailing: Container(
           width: 25,
           height: 25,

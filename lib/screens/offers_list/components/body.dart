@@ -1,37 +1,42 @@
+import 'package:cactus_jobs/models/offer.dart';
 import 'package:cactus_jobs/screens/home_screen/components/popular_offers.dart';
+import 'package:cactus_jobs/screens/offer_details/offer_details_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class Body extends StatefulWidget {
-  Body({Key key}) : super(key: key);
+class Body extends StatelessWidget {
+  final String bgAsset;
+  const Body({Key key, this.bgAsset}) : super(key: key);
 
-  @override
-  _BodyState createState() => _BodyState();
-}
-
-class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
+    final offers = Provider.of<List<Offer>>(context);
     return SingleChildScrollView(
       child: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         padding: EdgeInsets.symmetric(horizontal: 15),
-        child: StreamBuilder(
-          stream: FirebaseFirestore.instance
-              .collection('offers')
-              .where('categories', arrayContainsAny: ['it']).snapshots(),
-          builder:
-              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            if (!snapshot.hasData) {
-              return Center(child: CircularProgressIndicator());
-            }
-            return ListView(
-              children: snapshot.data.docs.map((document) {
-                return Text(document.data()['title']);
-              }).toList(),
-            );
-          },
+        child: Column(
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height * 0.4,
+              child: Image.asset(bgAsset),
+            ),
+            ...List.generate(
+              offers.length,
+              (index) => OfferCard(
+                offer: offers[index],
+                press: () {
+                  Navigator.pushNamed(
+                    context,
+                    OfferDetailsScreen.routeName,
+                    arguments: OfferDetailsArgument(offer: offers[index]),
+                  );
+                },
+              ),
+            )
+          ],
         ),
       ),
     );
