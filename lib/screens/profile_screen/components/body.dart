@@ -1,4 +1,5 @@
 import 'package:cactus_jobs/models/offer.dart';
+import 'package:cactus_jobs/models/userModel.dart';
 import 'package:cactus_jobs/screens/home_screen/components/body.dart';
 import 'package:cactus_jobs/screens/home_screen/components/popular_offers.dart';
 import 'package:cactus_jobs/screens/offer_details/offer_details_screen.dart';
@@ -17,6 +18,7 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     final offers = Provider.of<List<Offer>>(context);
+    final user = Provider.of<UserModel>(context);
 
     return SingleChildScrollView(
       child: Container(
@@ -43,26 +45,26 @@ class _BodyState extends State<Body> {
                           fit: BoxFit.fitHeight)),
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width / 15,
+                  width: MediaQuery.of(context).size.width / 25,
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ProfileField(
                       title: 'Имя',
-                      item: 'Ваня Иванов',
+                      item: user.fullName,
                     ),
                     ProfileField(
                       title: 'Email',
-                      item: 'employer@gmail.com',
+                      item: user.email,
                     ),
                     ProfileField(
                       title: 'Профессия',
-                      item: 'Go Developer',
+                      item: user.profession,
                     ),
                     ProfileField(
                       title: 'Город',
-                      item: 'Фергана',
+                      item: user.country,
                     ),
                   ],
                 ),

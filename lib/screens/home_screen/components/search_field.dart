@@ -1,6 +1,5 @@
 import 'package:cactus_jobs/screens/search_screen/search_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../constants.dart';
 

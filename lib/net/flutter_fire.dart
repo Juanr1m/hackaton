@@ -1,7 +1,7 @@
 import 'package:cactus_jobs/models/userModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:google_sign_in/google_sign_in.dart';
 
 Future<bool> register(String email, String password, String fullName) async {
@@ -13,7 +13,6 @@ Future<bool> register(String email, String password, String fullName) async {
       uid: _authResult.user.uid,
       email: _authResult.user.email,
       fullName: fullName.trim(),
-      accountCreated: Timestamp.now(),
     );
     bool _isInFirebase = await createUser(_user);
     if (_isInFirebase) {
@@ -59,7 +58,6 @@ Future<bool> signInWithGoogle() async {
       uid: _authResult.user.uid,
       email: _authResult.user.email,
       fullName: _authResult.user.displayName,
-      accountCreated: Timestamp.now(),
     );
     bool _isInFirebase = await createUser(_user);
     if (_isInFirebase) {
@@ -109,7 +107,6 @@ Future<bool> createUser(UserModel user) async {
     await FirebaseFirestore.instance.collection('users').doc(user.uid).set({
       'fullName': user.fullName.trim(),
       'email': user.email.trim(),
-      'accountCreated': Timestamp.now(),
     });
     return true;
   } catch (e) {

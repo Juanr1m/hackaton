@@ -1,13 +1,14 @@
 import 'package:cactus_jobs/constants.dart';
+import 'package:cactus_jobs/models/userModel.dart';
 import 'package:cactus_jobs/screens/edit_profile_screen/edit_profile_screen.dart';
 import 'package:cactus_jobs/screens/messages_screen/messages_screen.dart';
 import 'package:cactus_jobs/screens/profile_screen/profile_screen.dart';
 import 'package:cactus_jobs/screens/sign_in/sign_in.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 import 'components/body.dart';
 
@@ -67,6 +68,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<UserModel>(context);
     return Scaffold(
       backgroundColor: Colors.white,
       bottomNavigationBar: BottomNavigationBar(
@@ -121,9 +123,9 @@ class _HomePageState extends State<HomePage> {
                     gradient: LinearGradient(
                         colors: [kSecondaryColor, kPrimaryColor])),
                 accountEmail: Text(
-                  'test@gmail.com',
+                  user.email,
                 ),
-                accountName: Text('Ваня Иванов'),
+                accountName: Text(user.fullName),
                 currentAccountPicture: Container(
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,

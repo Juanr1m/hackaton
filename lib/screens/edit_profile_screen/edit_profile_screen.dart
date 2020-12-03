@@ -1,6 +1,6 @@
-import 'package:cactus_jobs/screens/home_screen/components/body.dart';
+import 'package:cactus_jobs/models/userModel.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 import '../../constants.dart';
 
@@ -20,6 +20,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<UserModel>(context);
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: MediaQuery.of(context).size.height / 15,
@@ -51,38 +52,56 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           children: [
             Align(
               alignment: Alignment.center,
-              child: Container(
-                width: MediaQuery.of(context).size.width / 3,
-                height: MediaQuery.of(context).size.width / 3,
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                        image: AssetImage('assets/rick.jpg'),
-                        fit: BoxFit.fitHeight)),
+              child: Stack(
+                alignment: Alignment.bottomRight,
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width / 3,
+                    height: MediaQuery.of(context).size.width / 3,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                            image: AssetImage('assets/rick.jpg'),
+                            fit: BoxFit.fitHeight)),
+                  ),
+                  Icon(Icons.edit),
+                ],
               ),
             ),
             SizedBox(height: 15),
             Align(
               alignment: Alignment.center,
-              child: Text('test@gmail.com'),
+              child: Text(
+                user.email,
+                style: TextStyle(fontSize: 16),
+              ),
             ),
             SizedBox(height: 20),
             EditProgileField(
               label: 'Имя',
-              hint: 'Ваня Иванов',
+              hint: user.fullName,
               controller: _fullName,
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 25),
             EditProgileField(
               label: 'Город',
-              hint: 'Фергана',
+              hint: user.country,
               controller: _country,
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 25),
             EditProgileField(
               label: 'Профессия',
-              hint: 'Go Разрабочик',
+              hint: user.profession,
               controller: _profession,
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height * 0.35,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  alignment: Alignment.bottomCenter,
+                  image: AssetImage('assets/Charco - Picture Art.png'),
+                ),
+              ),
             ),
           ],
         ),
