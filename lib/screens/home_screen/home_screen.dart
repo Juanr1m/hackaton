@@ -1,4 +1,5 @@
 import 'package:cactus_jobs/constants.dart';
+import 'package:cactus_jobs/screens/edit_profile_screen/edit_profile_screen.dart';
 import 'package:cactus_jobs/screens/messages_screen/messages_screen.dart';
 import 'package:cactus_jobs/screens/profile_screen/profile_screen.dart';
 import 'package:cactus_jobs/screens/sign_in/sign_in.dart';
@@ -32,21 +33,35 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  Icon _appBarIcon(int index) {
+  IconButton _appBarIcon(int index) {
     if (index == 0) {
-      return Icon(
-        Icons.add,
-        color: Colors.black,
+      return IconButton(
+        iconSize: 30,
+        onPressed: () {},
+        icon: Icon(
+          Icons.add,
+          color: Colors.black,
+        ),
       );
     } else if (index == 1) {
-      return Icon(
-        Icons.contacts_outlined,
-        color: Colors.black,
+      return IconButton(
+        iconSize: 30,
+        onPressed: () {},
+        icon: Icon(
+          Icons.contacts_outlined,
+          color: Colors.black,
+        ),
       );
     }
-    return Icon(
-      Icons.edit,
-      color: Colors.black,
+    return IconButton(
+      iconSize: 30,
+      onPressed: () {
+        Navigator.pushNamed(context, EditProfileScreen.routeName);
+      },
+      icon: Icon(
+        Icons.edit,
+        color: Colors.black,
+      ),
     );
   }
 
@@ -80,11 +95,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         toolbarHeight: MediaQuery.of(context).size.height / 15,
         actions: [
-          IconButton(
-            icon: _appBarIcon(_selectedIndex),
-            onPressed: () {},
-            iconSize: 30,
-          ),
+          _appBarIcon(_selectedIndex),
         ],
         leading: Builder(
           builder: (context) => IconButton(

@@ -1,3 +1,4 @@
+import 'package:cactus_jobs/screens/search_screen/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -21,17 +22,28 @@ class SearchField extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
         ),
-        child: TextFormField(
-          decoration: InputDecoration(
-              contentPadding: EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: MediaQuery.of(context).size.width / 38),
-              hintText: 'Найти вакансию',
-              hintStyle: GoogleFonts.montserrat(),
-              suffixIcon: Icon(
-                Icons.search,
-              ),
-              border: InputBorder.none),
+        child: GestureDetector(
+          onTap: () {
+            Navigator.pushNamed(context, SearchScreen.routeName);
+          },
+          child: Container(
+            padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width * 0.07),
+            decoration: BoxDecoration(),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Найти вакансию',
+                  style: TextStyle(color: Colors.black54, fontSize: 16),
+                ),
+                Icon(
+                  Icons.search,
+                  color: kPrimaryColor,
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
