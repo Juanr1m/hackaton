@@ -1,4 +1,6 @@
 import 'package:cactus_jobs/models/userModel.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -35,7 +37,16 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         ),
         actions: [
           TextButton(
-            onPressed: () {},
+            onPressed: () async {
+              await FirebaseFirestore.instance
+                  .collection('users')
+                  .doc(FirebaseAuth.instance.currentUser.uid)
+                  .update({
+                'fullName': _fullName.text,
+                'country': _country.text,
+                'profession': _profession.text
+              });
+            },
             child: Text(
               'Сохранить',
               style: TextStyle(color: Colors.black, fontSize: 16),

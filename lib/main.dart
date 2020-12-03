@@ -1,7 +1,7 @@
 import 'package:cactus_jobs/models/offer.dart';
 
 import 'package:cactus_jobs/routes.dart';
-import 'package:cactus_jobs/screens/home_screen/home_screen.dart';
+
 import 'package:cactus_jobs/screens/sign_in/sign_in.dart';
 
 import 'package:cactus_jobs/theme.dart';
