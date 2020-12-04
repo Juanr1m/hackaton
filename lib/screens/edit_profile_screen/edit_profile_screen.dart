@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:cactus_jobs/models/userModel.dart';
-import 'package:cactus_jobs/screens/profile_screen/profile_screen.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -56,7 +56,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 children: <Widget>[
                   new ListTile(
                       leading: new Icon(Icons.photo_library),
-                      title: new Text('Галлерея'),
+                      title: new Text('Галерея'),
                       onTap: () {
                         _imgFromGallery();
                         Navigator.of(context).pop();
