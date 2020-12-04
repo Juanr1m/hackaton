@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:cactus_jobs/models/userModel.dart';
+import 'package:cactus_jobs/screens/profile_screen/profile_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../constants.dart';
 
@@ -20,10 +24,63 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   TextEditingController _country = TextEditingController();
   TextEditingController _profession = TextEditingController();
 
+  File _image;
+
+  _imgFromCamera() async {
+    final _picker = ImagePicker();
+    PickedFile pickedImage =
+        await _picker.getImage(source: ImageSource.camera, imageQuality: 50);
+    final File image = File(pickedImage.path);
+    setState(() {
+      _image = image;
+    });
+  }
+
+  _imgFromGallery() async {
+    final _picker = ImagePicker();
+    PickedFile pickedImage =
+        await _picker.getImage(source: ImageSource.gallery, imageQuality: 50);
+    final File image = File(pickedImage.path);
+    setState(() {
+      _image = image;
+    });
+  }
+
+  void _showPicker(context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext bc) {
+          return SafeArea(
+            child: Container(
+              child: new Wrap(
+                children: <Widget>[
+                  new ListTile(
+                      leading: new Icon(Icons.photo_library),
+                      title: new Text('Галлерея'),
+                      onTap: () {
+                        _imgFromGallery();
+                        Navigator.of(context).pop();
+                      }),
+                  new ListTile(
+                    leading: new Icon(Icons.photo_camera),
+                    title: new Text('Камера'),
+                    onTap: () {
+                      _imgFromCamera();
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserModel>(context);
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         toolbarHeight: MediaQuery.of(context).size.height / 15,
         leading: IconButton(
@@ -38,14 +95,20 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         actions: [
           TextButton(
             onPressed: () async {
-              await FirebaseFirestore.instance
+              var currentUserUid = FirebaseAuth.instance.currentUser.uid;
+              var userDoc = FirebaseFirestore.instance
                   .collection('users')
-                  .doc(FirebaseAuth.instance.currentUser.uid)
-                  .update({
-                'fullName': _fullName.text,
-                'country': _country.text,
-                'profession': _profession.text
-              });
+                  .doc(currentUserUid);
+              if (_fullName.text != '') {
+                await userDoc.update({'fullName': _fullName.text.trim()});
+              }
+              if (_country.text != '') {
+                await userDoc.update({'country': _country.text.trim()});
+              }
+              if (_profession.text != '') {
+                await userDoc.update({'profession': _profession.text.trim()});
+              }
+              Navigator.pop(context);
             },
             child: Text(
               'Сохранить',
@@ -63,20 +126,28 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           children: [
             Align(
               alignment: Alignment.center,
-              child: Stack(
-                alignment: Alignment.bottomRight,
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width / 3,
-                    height: MediaQuery.of(context).size.width / 3,
-                    decoration: BoxDecoration(
+              child: GestureDetector(
+                onTap: () {
+                  _showPicker(context);
+                },
+                child: Stack(
+                  alignment: Alignment.bottomRight,
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width / 3,
+                      height: MediaQuery.of(context).size.width / 3,
+                      decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
-                            image: AssetImage('assets/rick.jpg'),
-                            fit: BoxFit.fitHeight)),
-                  ),
-                  Icon(Icons.edit),
-                ],
+                            image: _image == null
+                                ? AssetImage('assets/rick.jpg')
+                                : FileImage(_image),
+                            fit: BoxFit.fitHeight),
+                      ),
+                    ),
+                    Icon(Icons.edit),
+                  ],
+                ),
               ),
             ),
             SizedBox(height: 15),
