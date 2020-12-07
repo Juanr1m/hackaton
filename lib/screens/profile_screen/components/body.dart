@@ -41,7 +41,9 @@ class _BodyState extends State<Body> {
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
-                          image: AssetImage('assets/rick.jpg'),
+                          image: user.displayImage == ''
+                              ? AssetImage('assets/rick.jpg')
+                              : NetworkImage(user.displayImage),
                           fit: BoxFit.fitHeight)),
                 ),
                 SizedBox(

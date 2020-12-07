@@ -4,6 +4,7 @@ import 'package:cactus_jobs/models/userModel.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:image_picker/image_picker.dart';
@@ -76,6 +77,33 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         });
   }
 
+  Future<void> uploadPic() async {
+    try {
+      Reference ref = FirebaseStorage.instance.ref('users/file.png');
+
+      await ref.putFile(_image);
+      UserModel _user = UserModel(
+        displayImage: await ref.getDownloadURL(),
+      );
+      await savePicToFirestore(_user);
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<bool> savePicToFirestore(UserModel user) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser.uid)
+          .update({'displayImage': user.displayImage});
+      return true;
+    } catch (e) {
+      print(e);
+    }
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserModel>(context);
@@ -108,6 +136,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               if (_profession.text != '') {
                 await userDoc.update({'profession': _profession.text.trim()});
               }
+              if (_image != null) {
+                await uploadPic();
+              }
               Navigator.pop(context);
             },
             child: Text(
@@ -139,9 +170,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
-                            image: _image == null
-                                ? AssetImage('assets/rick.jpg')
-                                : FileImage(_image),
+                            image: NetworkImage(user.displayImage),
                             fit: BoxFit.fitHeight),
                       ),
                     ),

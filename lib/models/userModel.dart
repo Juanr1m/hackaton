@@ -9,7 +9,6 @@ part 'userModel.g.dart';
 class UserModel {
   String uid;
   String email;
-
   String fullName;
   String displayImage;
   String country;
