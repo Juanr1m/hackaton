@@ -50,8 +50,8 @@ class Body extends StatelessWidget {
                 ),
                 Container(
                   child: Image.asset(offer.company),
-                  width: 50,
-                  height: 50,
+                  width: MediaQuery.of(context).size.width * 0.12,
+                  height: MediaQuery.of(context).size.width * 0.12,
                 )
               ],
             ),

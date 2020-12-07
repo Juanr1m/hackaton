@@ -148,73 +148,75 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           )
         ],
       ),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        padding: EdgeInsets.symmetric(horizontal: 15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Align(
-              alignment: Alignment.center,
-              child: GestureDetector(
-                onTap: () {
-                  _showPicker(context);
-                },
-                child: Stack(
-                  alignment: Alignment.bottomRight,
-                  children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width / 3,
-                      height: MediaQuery.of(context).size.width / 3,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                            image: NetworkImage(user.displayImage),
-                            fit: BoxFit.fitHeight),
+      body: SingleChildScrollView(
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          padding: EdgeInsets.symmetric(horizontal: 15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Align(
+                alignment: Alignment.center,
+                child: GestureDetector(
+                  onTap: () {
+                    _showPicker(context);
+                  },
+                  child: Stack(
+                    alignment: Alignment.bottomRight,
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width / 3,
+                        height: MediaQuery.of(context).size.width / 3,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                              image: NetworkImage(user.displayImage),
+                              fit: BoxFit.fitHeight),
+                        ),
                       ),
-                    ),
-                    Icon(Icons.edit),
-                  ],
+                      Icon(Icons.edit),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            SizedBox(height: 15),
-            Align(
-              alignment: Alignment.center,
-              child: Text(
-                user.email,
-                style: TextStyle(fontSize: 16),
-              ),
-            ),
-            SizedBox(height: 20),
-            EditProgileField(
-              label: 'Имя',
-              hint: user.fullName,
-              controller: _fullName,
-            ),
-            SizedBox(height: 25),
-            EditProgileField(
-              label: 'Город',
-              hint: user.country,
-              controller: _country,
-            ),
-            SizedBox(height: 25),
-            EditProgileField(
-              label: 'Профессия',
-              hint: user.profession,
-              controller: _profession,
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height * 0.35,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  alignment: Alignment.bottomCenter,
-                  image: AssetImage('assets/Charco - Picture Art.png'),
+              SizedBox(height: 15),
+              Align(
+                alignment: Alignment.center,
+                child: Text(
+                  user.email,
+                  style: TextStyle(fontSize: 16),
                 ),
               ),
-            ),
-          ],
+              SizedBox(height: 20),
+              EditProgileField(
+                label: 'Имя',
+                hint: user.fullName,
+                controller: _fullName,
+              ),
+              SizedBox(height: 25),
+              EditProgileField(
+                label: 'Город',
+                hint: user.country,
+                controller: _country,
+              ),
+              SizedBox(height: 25),
+              EditProgileField(
+                label: 'Профессия',
+                hint: user.profession,
+                controller: _profession,
+              ),
+              Container(
+                height: MediaQuery.of(context).size.height * 0.35,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    alignment: Alignment.bottomCenter,
+                    image: AssetImage('assets/Charco - Picture Art.png'),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
