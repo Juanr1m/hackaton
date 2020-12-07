@@ -1,4 +1,5 @@
 import 'package:cactus_jobs/models/offer.dart';
+import 'package:cactus_jobs/push_notification.dart';
 
 import 'package:cactus_jobs/routes.dart';
 
@@ -21,9 +22,9 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    PushNotificationsManager().init();
     return MultiProvider(
       providers: [
         StreamProvider<List<Offer>>(
