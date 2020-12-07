@@ -3,6 +3,7 @@ import 'constants.dart';
 
 ThemeData theme() {
   return ThemeData(
+      accentColor: kPrimaryColor,
       scaffoldBackgroundColor: Colors.white,
       primaryColor: kPrimaryColor,
       accentIconTheme: IconThemeData(color: kPrimaryColor),

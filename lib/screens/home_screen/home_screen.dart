@@ -120,8 +120,10 @@ class _HomePageState extends State<HomePage> {
               padding: EdgeInsets.zero,
               child: UserAccountsDrawerHeader(
                 decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: [kSecondaryColor, kPrimaryColor])),
+                  gradient: LinearGradient(
+                    colors: [kPrimaryColor, kSecondaryColor],
+                  ),
+                ),
                 accountEmail: Text(
                   user.email,
                 ),

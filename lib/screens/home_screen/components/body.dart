@@ -16,11 +16,10 @@ class HomeBody extends StatefulWidget {
 class _HomeBodyState extends State<HomeBody> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      padding: EdgeInsets.symmetric(horizontal: 15),
-      child: SingleChildScrollView(
+    return SingleChildScrollView(
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        padding: EdgeInsets.symmetric(horizontal: 15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
