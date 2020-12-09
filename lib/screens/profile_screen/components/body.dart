@@ -41,7 +41,7 @@ class _BodyState extends State<Body> {
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
-                          image: user.displayImage == ''
+                          image: user.displayImage == null
                               ? AssetImage('assets/rick.jpg')
                               : NetworkImage(user.displayImage),
                           fit: BoxFit.fitHeight)),
@@ -62,11 +62,11 @@ class _BodyState extends State<Body> {
                     ),
                     ProfileField(
                       title: 'Профессия',
-                      item: user.profession,
+                      item: user.profession == null ? '' : user.profession,
                     ),
                     ProfileField(
                       title: 'Город',
-                      item: user.country,
+                      item: user.country == null ? '' : user.country,
                     ),
                   ],
                 ),
