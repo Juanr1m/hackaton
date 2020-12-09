@@ -1,3 +1,5 @@
+import 'package:cactus_jobs/screens/home_screen/home_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'components/body.dart';
@@ -8,10 +10,14 @@ class SignInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      resizeToAvoidBottomInset: false,
-      body: Body(),
-    );
+    User user = FirebaseAuth.instance.currentUser;
+    if (user == null) {
+      return Scaffold(
+        appBar: AppBar(),
+        resizeToAvoidBottomInset: false,
+        body: Body(),
+      );
+    }
+    return HomePage();
   }
 }
